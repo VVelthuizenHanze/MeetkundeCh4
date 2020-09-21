@@ -6,10 +6,12 @@ package model;
  * Doel: Sla een cirkel op en maak het mogelijk daar operaties op uit te oefenen
  */
 public class Cirkel {
-    public double straal;
-    public double middelpuntX;
-    public double middelpuntY;
-    public String kleur;
+    private final static double GRENSWAARDE_GROOT_FIGUUR = 100.0;
+
+    private double straal;
+    private double middelpuntX;
+    private double middelpuntY;
+    private String kleur;
 
     public Cirkel(double straal, double middelpuntX, double middelpuntY, String kleur) {
         this.straal = straal;
@@ -43,5 +45,25 @@ public class Cirkel {
 
     public double geefOppervlakte() {
         return Math.PI * straal * straal;
+    }
+
+    public String vertelOverGrootte() {
+        if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
+            return "Ik ben groot!!!";
+        } else {
+            return "Ik ben klein!!!!";
+        }
+    }
+
+    public double getStraal() {
+        return straal;
+    }
+
+    public String getKleur() {
+        return kleur;
+    }
+
+    public void setKleur(String kleur) {
+        this.kleur = kleur;
     }
 }

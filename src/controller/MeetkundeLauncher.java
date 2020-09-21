@@ -17,6 +17,8 @@ public class MeetkundeLauncher {
 
         Cirkel mijnAllArgsCirkel = new Cirkel(3, 1, 4, "groen");
         System.out.println(Cirkel.geefDefinitie());
+        mijnAllArgsCirkel.
+        System.out.println(mijnAllArgsCirkel.getStraal());
         System.out.println(mijnAllArgsCirkel.geefOmtrek());
         System.out.println(mijnAllArgsCirkel.geefOppervlakte());
 
