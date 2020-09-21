@@ -8,4 +8,6 @@ package model;
  * Doel:
  */
 public class Rechthoek {
+    public double lengte;
+    public double breedte;
 }
