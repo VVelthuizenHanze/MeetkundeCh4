@@ -21,9 +21,13 @@ public class MeetkundeLauncher {
         mijnCirkelArray[1] = new Cirkel();
         mijnCirkelArray[2] = new Cirkel(6);
 
+        System.out.println(Cirkel.geefDefinitie());
+
         for (Cirkel cirkel : mijnCirkelArray) {
             System.out.println(cirkel.geefOmtrek());
             System.out.println(cirkel.geefOppervlakte());
+            System.out.println(cirkel.vertelOverGrootte());
+            System.out.println();
         }
     }
 

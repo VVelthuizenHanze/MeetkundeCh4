@@ -49,15 +49,4 @@ public class Cirkel {
         }
     }
 
-    public double getStraal() {
-        return straal;
-    }
-
-    public String getKleur() {
-        return kleur;
-    }
-
-    public void setKleur(String kleur) {
-        this.kleur = kleur;
-    }
 }
