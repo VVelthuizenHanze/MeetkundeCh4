@@ -9,19 +9,17 @@ public class Cirkel {
     private final static double GRENSWAARDE_GROOT_FIGUUR = 100.0;
 
     private double straal;
-    private double middelpuntX;
-    private double middelpuntY;
+    private Punt middelpunt;
     private String kleur;
 
-    public Cirkel(double straal, double middelpuntX, double middelpuntY, String kleur) {
+    public Cirkel(double straal, Punt middelpunt, String kleur) {
         this.straal = straal;
-        this.middelpuntX = middelpuntX;
-        this.middelpuntY = middelpuntY;
+        this.middelpunt = middelpunt;
         this.kleur = kleur;
     }
 
     public Cirkel(double straal) {
-        this(straal, 0, 0, "paars");
+        this(straal, new Punt(), "paars");
     }
 
     public Cirkel() {
@@ -49,4 +47,7 @@ public class Cirkel {
         }
     }
 
+    public Punt getMiddelpunt() {
+        return middelpunt;
+    }
 }

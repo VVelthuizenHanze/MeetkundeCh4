@@ -1,8 +1,7 @@
 package controller;
 
 import model.Cirkel;
-
-import java.util.Scanner;
+import model.Punt;
 
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
@@ -17,7 +16,7 @@ public class MeetkundeLauncher {
 
         Cirkel[] mijnCirkelArray = new Cirkel[3];
 
-        mijnCirkelArray[0] = new Cirkel(3, 1, 4, "groen");
+        mijnCirkelArray[0] = new Cirkel(3, new Punt(1, 4), "groen");
         mijnCirkelArray[1] = new Cirkel();
         mijnCirkelArray[2] = new Cirkel(6);
 
@@ -26,7 +25,8 @@ public class MeetkundeLauncher {
         for (Cirkel cirkel : mijnCirkelArray) {
             System.out.println(cirkel.geefOmtrek());
             System.out.println(cirkel.geefOppervlakte());
-            System.out.println(cirkel.vertelOverGrootte());
+            System.out.println(cirkel.getMiddelpunt().getxCoordinaat());
+            System.out.println(cirkel.getMiddelpunt().getyCoordinaat());
             System.out.println();
         }
     }
