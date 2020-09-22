@@ -5,21 +5,19 @@ package model;
  *
  * Doel: Sla een cirkel op en maak het mogelijk daar operaties op uit te oefenen
  */
-public class Cirkel {
-    private final static double GRENSWAARDE_GROOT_FIGUUR = 100.0;
+public class Cirkel extends Figuur {
 
     private double straal;
     private Punt middelpunt;
-    private String kleur;
 
     public Cirkel(double straal, Punt middelpunt, String kleur) {
+        super(kleur);
         this.straal = straal;
         this.middelpunt = middelpunt;
-        this.kleur = kleur;
     }
 
     public Cirkel(double straal) {
-        this(straal, new Punt(), "paars");
+        this(straal, new Punt(), DEFAULTWAARDE_KLEUR);
     }
 
     public Cirkel() {
@@ -31,23 +29,24 @@ public class Cirkel {
                 "die allemaal dezelfde afstand tot een middelpunt hebben.";
     }
 
+    @Override
     public double geefOmtrek() {
         return 2 * Math.PI * straal;
     }
 
+    @Override
     public double geefOppervlakte() {
         return Math.PI * straal * straal;
     }
 
-    public String vertelOverGrootte() {
-        if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
-            return "Ik ben groot!!!";
-        } else {
-            return "Ik ben klein!!!!";
-        }
-    }
-
     public Punt getMiddelpunt() {
         return middelpunt;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nStraal: " + straal +
+                "\nMiddelpunt: " + middelpunt.toString();
     }
 }
