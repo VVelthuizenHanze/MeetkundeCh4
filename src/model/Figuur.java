@@ -5,7 +5,7 @@ package model;
  *
  * Sla de algemene eigenschappen van een figuur op
  */
-public class Figuur {
+public abstract class Figuur {
     protected static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
     protected static final String DEFAULTWAARDE_KLEUR = "taupe";
 
@@ -23,13 +23,9 @@ public class Figuur {
         return "Een figuur is een verzameling punten.";
     }
 
-    public double geefOmtrek() {
-        return 0;
-    }
+    public abstract double geefOmtrek();
 
-    public double geefOppervlakte() {
-        return 0;
-    }
+    public abstract double geefOppervlakte();
 
     public String vertelOverGrootte() {
         if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
