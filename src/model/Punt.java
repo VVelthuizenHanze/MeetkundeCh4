@@ -2,10 +2,8 @@ package model;
 
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
- * <p>
- * Uitwerking van opdracht
- * <p>
- * Doel:
+ *
+ * Combineer een x en y coordinaat tot 1 object
  */
 public class Punt {
     private double xCoordinaat;
