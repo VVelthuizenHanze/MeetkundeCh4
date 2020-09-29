@@ -5,7 +5,7 @@ package model;
  *
  * Sla de algemene eigenschappen van een figuur op
  */
-public abstract class Figuur {
+public abstract class Figuur implements Comparable<Figuur> {
     protected static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
     protected static final String DEFAULTWAARDE_KLEUR = "taupe";
 
@@ -41,6 +41,20 @@ public abstract class Figuur {
 
     public void setKleur(String kleur) {
         this.kleur = kleur;
+    }
+
+    @Override
+    public int compareTo(Figuur anderFiguur) {
+        if (this.geefOppervlakte() > anderFiguur.geefOppervlakte()) {
+            return 1;
+        } else if (this.geefOppervlakte() < anderFiguur.geefOppervlakte()) {
+            return -1;
+        } else { // oppervlaktes zijn dus gelijk
+            return 0;
+            // return this.getKleur().compareTo(anderFiguur.getKleur());
+        }
+
+
     }
 
     @Override

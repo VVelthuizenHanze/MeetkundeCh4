@@ -43,6 +43,10 @@ public class Cirkel extends Figuur {
         return middelpunt;
     }
 
+    public double getStraal() {
+        return straal;
+    }
+
     @Override
     public String toString() {
         return super.toString() +
