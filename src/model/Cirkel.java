@@ -12,7 +12,7 @@ public class Cirkel extends Figuur {
 
     public Cirkel(double straal, Punt middelpunt, String kleur) {
         super(kleur);
-        this.straal = straal;
+        this.setStraal(straal);
         this.middelpunt = middelpunt;
     }
 
@@ -45,6 +45,13 @@ public class Cirkel extends Figuur {
 
     public double getStraal() {
         return straal;
+    }
+
+    public void setStraal(double straal) throws IllegalArgumentException {
+        if (straal <= 0) {
+            throw new IllegalArgumentException("De straal moet positief zijn.");
+        }
+        this.straal = straal;
     }
 
     @Override
