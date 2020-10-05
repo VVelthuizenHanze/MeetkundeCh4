@@ -4,6 +4,8 @@ import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,9 +51,19 @@ public class MeetkundeLauncher {
                 rechthoeken.add(new Rechthoek(lengte, breedte, new Punt(xCoordinaat, yCoordinaat), kleur));
             }
 
-            for (Rechthoek rechthoek : rechthoeken) {
-                System.out.println(rechthoek);
-                System.out.println();
+            File uitvoerBestand = new File("resources/Rechthoeken.txt");
+
+            try {
+                PrintWriter printWriter = new PrintWriter(uitvoerBestand);
+
+                for (Rechthoek rechthoek : rechthoeken) {
+                    printWriter.println(rechthoek);
+                    printWriter.println();
+                }
+
+                printWriter.close();
+            } catch (IOException nietGemaakt) {
+                System.out.println("Het bestand kan niet worden aangemaakt.");
             }
         }
     }
