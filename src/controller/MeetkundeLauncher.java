@@ -1,11 +1,15 @@
 package controller;
 
+import database.CirkelDAO;
+import database.DBaccess;
+import database.PuntDAO;
 import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,51 +25,12 @@ public class MeetkundeLauncher {
 
     public static void main(String[] args) {
 
-        ArrayList<String> regelsUitBestand = new ArrayList<>();
-        File rechthoekenBestand = new File("resources/Rechthoek.csv");
+        DBaccess dBaccess = new DBaccess("figuren", "userFiguren","userFigurenPW");
+        dBaccess.openConnection();
+        CirkelDAO cirkelDAO = new CirkelDAO(dBaccess);
+        cirkelDAO.slaCirkelOp(new Cirkel(5, new Punt(3, 7), "oranje"));
+        dBaccess.closeConnection();
 
-        Scanner invoer = null;
-        try {
-            invoer = new Scanner(rechthoekenBestand);
-            while (invoer.hasNextLine()) {
-                regelsUitBestand.add(invoer.nextLine());
-            }
-        } catch (FileNotFoundException exception) {
-            // exception.printStackTrace();
-            System.out.println("Het bestand is niet gevonden.");
-        } finally {
-            if (invoer != null) {
-                invoer.close();
-            }
-        }
-        
-        if (regelsUitBestand.size() > 0) {
-            ArrayList<Rechthoek> rechthoeken = new ArrayList<>();
-            for (String regel : regelsUitBestand) {
-                String[] regelArray = regel.split(",");
-                double lengte = Double.parseDouble(regelArray[0]);
-                double breedte = Double.parseDouble(regelArray[1]);
-                double xCoordinaat = Double.parseDouble(regelArray[2]);
-                double yCoordinaat = Double.parseDouble(regelArray[3]);
-                String kleur = regelArray[4];
-                rechthoeken.add(new Rechthoek(lengte, breedte, new Punt(xCoordinaat, yCoordinaat), kleur));
-            }
-
-            File uitvoerBestand = new File("resources/Rechthoeken.txt");
-
-            try {
-                PrintWriter printWriter = new PrintWriter(uitvoerBestand);
-
-                for (Rechthoek rechthoek : rechthoeken) {
-                    printWriter.println(rechthoek);
-                    printWriter.println();
-                }
-
-                printWriter.close();
-            } catch (IOException nietGemaakt) {
-                System.out.println("Het bestand kan niet worden aangemaakt.");
-            }
-        }
     }
 
     public static void toonInformatie(Figuur figuur) {
