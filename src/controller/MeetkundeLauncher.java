@@ -25,17 +25,22 @@ public class MeetkundeLauncher {
 
     public static void main(String[] args) {
 
-        DBaccess dBaccess = new DBaccess("figuren", "userFiguren","userFigurenPW");
+        DBaccess dBaccess = new DBaccess("figuren", "userFiguren", "userFigurenPW");
         dBaccess.openConnection();
+
+        PuntDAO puntDAO = new PuntDAO(dBaccess);
+        puntDAO.slaPuntOp(new Punt(8, -12));
+
+        ArrayList<Punt> puntenInDeDatabase = puntDAO.getPunten();
+        for (Punt punt : puntenInDeDatabase) {
+            System.out.println(punt);
+        }
+
         CirkelDAO cirkelDAO = new CirkelDAO(dBaccess);
-        cirkelDAO.slaCirkelOp(new Cirkel(5, new Punt(3, 7), "oranje"));
+        cirkelDAO.slaCirkelOp(new Cirkel(6.5, new Punt(-2.3,-1.3),"paars"));
+
         dBaccess.closeConnection();
 
-    }
-
-    public static void toonInformatie(Figuur figuur) {
-        System.out.println(figuur);
-        System.out.println();
     }
 
 }
